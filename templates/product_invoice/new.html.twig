@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProductInvoice{% endblock %}
+
+{% block body %}
+    <h1>Create new ProductInvoice</h1>
+
+    {{ include('product_invoice/_form.html.twig') }}
+
+    <a href="{{ path('product_invoice_index') }}">back to list</a>
+{% endblock %}

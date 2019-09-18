@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShoppingCartController!{% endblock %}
+
+{% block body %}
+    <h1>Shoppingcart!</h1>
+
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% set total = 0 %}
+      {% for array in cart %}
+      <tr>
+        <td> {{ array.name }} </td>
+        <td> {{ array.price }} </td>
+        <td> {{ array.quantity }} </td>
+        <td> € {{ array.quantity * array.price }},-</td>
+        {% set total = total + (array.quantity * array.price) %}
+        <td><a class="btn btn-success" href="{{ path('paidall', {'id': array.id}) }}">pay</a></td>
+      </tr>
+      {% else %}
+      <td colspan="3">no records found</td>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
